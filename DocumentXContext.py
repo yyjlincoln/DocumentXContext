@@ -89,6 +89,24 @@ class DocumentXContext():
         if res:
             return res['result']
 
+    def searchDocumentsByName(self, name='', limit=[0, 0]):
+        res = self.get('/searchDocumentsByName', {
+            'name': name,
+            'start': limit[0],
+            'end': limit[1]
+        })
+        if res:
+            return res['result']
+
+    def searchDocumentsBySubject(self, subject='', limit=[0, 0]):
+        res = self.get('/searchDocumentsBySubject', {
+            'subject': subject,
+            'start': limit[0],
+            'end': limit[1]
+        })
+        if res:
+            return res['result']
+
     def share(self, docID, targetUID, read=True, write=False):
         res = self.get('/share', {
             'targetUID': targetUID,
