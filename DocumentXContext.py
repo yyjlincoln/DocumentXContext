@@ -70,7 +70,7 @@ class DocumentXContext():
         else:
             return r
 
-    def getAllDocuments(self, status='all', limit=[0, 0]):
+    def getDocuments(self, status='all', limit=[0, 0]):
         'Valid status: all / active / archived'
         res = self.get('/getDocuments', {
             'status': status,
@@ -89,6 +89,15 @@ class DocumentXContext():
         if res:
             return res['result']
 
+    def getDocumentsByHashTag(self, hashTag='', limit=[0, 0]):
+        res = self.get('/getDocumentsByHashTag', {
+            'hashTag': hashTag,
+            'start': limit[0],
+            'end': limit[1]
+        })
+        if res:
+            return res['result']
+
     def searchDocumentsByName(self, name='', limit=[0, 0]):
         res = self.get('/searchDocumentsByName', {
             'name': name,
@@ -98,8 +107,26 @@ class DocumentXContext():
         if res:
             return res['result']
 
+    def getDocumentsByName(self, name='', limit=[0, 0]):
+        res = self.get('/getDocumentsByName', {
+            'name': name,
+            'start': limit[0],
+            'end': limit[1]
+        })
+        if res:
+            return res['result']
+
     def searchDocumentsBySubject(self, subject='', limit=[0, 0]):
         res = self.get('/searchDocumentsBySubject', {
+            'subject': subject,
+            'start': limit[0],
+            'end': limit[1]
+        })
+        if res:
+            return res['result']
+
+    def getDocumentsBySubject(self, subject='', limit=[0, 0]):
+        res = self.get('/getDocumentsBySubject', {
             'subject': subject,
             'start': limit[0],
             'end': limit[1]

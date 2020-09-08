@@ -4,7 +4,7 @@ import getpass
 # Query all documents of a user
 ctx = DocumentXContext().login(input('uID:'), getpass.getpass('Password:'))
 recipient = input('Share to:')
-for doc in ctx.getAllDocuments(status='all'):
+for doc in ctx.getDocuments(status='all'):
     if doc['subject'].lower()=='physics':
         override = True
         for policy in doc['policies']:
