@@ -18,7 +18,7 @@ class DocumentXContext():
     def login(self, uID: str, password: str):
         r = self.post('/login', {
             'uID': uID,
-            'password': hashlib.md5(password.encode()).hexdigest()
+            'password': hashlib.sha256(password.encode()).hexdigest()
         }, use_cridentials=False)
         if r:
             self.uID = r['uID']
